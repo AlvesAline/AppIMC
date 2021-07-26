@@ -12,19 +12,24 @@ export default Imc = () => {
         result:0, 
         resulTexto:''
     })
+    
+    const[pesoFinal, setpesoFinal] = useState({valor:0})
+
+    const handleInputChange = (name, value) => {
+        setpesoFinal({
+            ...pesoFinal, [name]:value
+        })
+    }
 
     const calcular = ()=> {
         let pesoFinal = peso/(altura*altura)
-        let imcFinal = this.state
-        imcFinal.result = pesoFinal
-        
 
-        if(imcFinal.result <= 18,46){
-            imcFinal.resulTexto="Abaixo do peso!"
-        } else if (imcFinal.result > 18,46 && imcFinal.result <=24,9){
-            imcFinal.resulTexto="Peso normal!"
+        if(pesoFinal <= 18,46){
+            pesoFinalexto="Abaixo do peso!"
+        } else if (pesoFinal > 18,46 && pesoFinal <=24,9){
+            pesoFinalexto="Peso normal!"
         } else {
-            imcFinal.resulTexto="Acima do Peso!"
+            pesoFinalexto="Acima do Peso!"
         }
     }
 
@@ -32,21 +37,14 @@ export default Imc = () => {
         <View>
             <View>Calculadora de IMC</View>
             <View>
-                <TextInput style={styles.form} placeholder='Nome' textContentType="nome" onChangeText={(nome)=>{({nome})}}/>
-                <TextInput style={styles.form} placeholder='Peso' keyboardType='numbers-and-punctuation' onChangeText={(peso)=>{({peso})}} />
-                <TextInput style={styles.form} placeholder='Altura' keyboardType='numbers-and-punctuation' onChangeText={(altura)=>{({altura})}}/>
+                <TextInput style={styles.form} placeholder='Nome' textContentType="nome" onChangeText={(valor) => handleInputChange ("nome", (valor))}/>
+                <TextInput style={styles.form} placeholder='Peso' keyboardType='numbers-and-punctuation'  onChangeText={(valor) => handleInputChange ("peso", Number(valor))} />
+                <TextInput style={styles.form} placeholder='Altura' keyboardType='numbers-and-punctuation' onChangeText={(valor) => handleInputChange ("altura", Number(valor))}/>
                 <TouchableOpacity style={styles.botao} onPress={calcular}><Text>Calcular IMC</Text></TouchableOpacity>
             
-                <Text style={styles.result}>{result.toFixed(2)}</Text>
-                <Text style={styles.result2}>{nome}{resulTexto}</Text>
+                {/* <Text style={styles.result}>{pesoFinal.valor.toFixed(2)}</Text>
+                <Text style={styles.result2}>{nome}{resulTexto}</Text> */}
             </View>
         </View>
     )
 }   
-
-
-  // constructor(props) {
-    //     super(props)
-    //     this.state = {altura:0, peso:0, nome:"", result:0, resulTexto:""}
-    //     this.calcular=this.calcular.bind(this)
-    // }

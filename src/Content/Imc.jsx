@@ -1,45 +1,52 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import { View, Text, TextInput, TouchableOpacity,  StyleSheet } from 'react-native';
 import {styles} from './styles'
 
 
 
-export default class Imc extends Component()  {
-    constructor(props) {
-        super(props)
-        this.state = {altura:0, peso:0, nome:"", result:0, resulTexto:""}
-        this.calcular=this.calcular.bind(this)
-    }
+export default Imc = () => {
+    const [valores, setValores] = useState({
+        altura:0, 
+        peso:0, 
+        nome:'', 
+        result:0, 
+        resulTexto:''
+    })
 
-    calcular(){
-        let pesoFinal = this.state.peso/(this.state.altura*this.state.altura)
+    const calcular = ()=> {
+        let pesoFinal = peso/(altura*altura)
         let imcFinal = this.state
         imcFinal.result = pesoFinal
-        this.setState( imcFinal)
+        
 
-        if(imcFinal.result < 18,46){
+        if(imcFinal.result <= 18,46){
             imcFinal.resulTexto="Abaixo do peso!"
-        } else if (imcFinal.result > 18,46 || imcFinal.result <=24,9){
+        } else if (imcFinal.result > 18,46 && imcFinal.result <=24,9){
             imcFinal.resulTexto="Peso normal!"
         } else {
             imcFinal.resulTexto="Acima do Peso!"
         }
     }
 
-        render(){
-            return (
-                <View>
-                    <View>Calculadora de IMC</View>
-                    <View>
-                        <TextInput style={styles.form} placeholder='Nome' textContentType="nome" onChangeText={(nome)=>{this.setState({nome})}}/>
-                        <TextInput style={styles.form} placeholder='Peso' keyboardType='numbers-and-punctuation' onChangeText={(peso)=>{this.setState({peso})}} />
-                        <TextInput style={styles.form} placeholder='Altura' keyboardType='numbers-and-punctuation' onChangeText={(altura)=>{this.setState({altura})}}/>
-                        <TouchableOpacity style={styles.botao} onPress={this.calcular}><Text>Calcular IMC</Text></TouchableOpacity>
-                    
-                        <Text style={styles.result}>{this.state.result.toFixed(2)}</Text>
-                        <Text style={styles.result2}>{this.state.nome}{this.state.resulTexto}</Text>
-                    </View>
-                </View>
-            )
-        }   
-}
+    return (
+        <View>
+            <View>Calculadora de IMC</View>
+            <View>
+                <TextInput style={styles.form} placeholder='Nome' textContentType="nome" onChangeText={(nome)=>{({nome})}}/>
+                <TextInput style={styles.form} placeholder='Peso' keyboardType='numbers-and-punctuation' onChangeText={(peso)=>{({peso})}} />
+                <TextInput style={styles.form} placeholder='Altura' keyboardType='numbers-and-punctuation' onChangeText={(altura)=>{({altura})}}/>
+                <TouchableOpacity style={styles.botao} onPress={calcular}><Text>Calcular IMC</Text></TouchableOpacity>
+            
+                <Text style={styles.result}>{result.toFixed(2)}</Text>
+                <Text style={styles.result2}>{nome}{resulTexto}</Text>
+            </View>
+        </View>
+    )
+}   
+
+
+  // constructor(props) {
+    //     super(props)
+    //     this.state = {altura:0, peso:0, nome:"", result:0, resulTexto:""}
+    //     this.calcular=this.calcular.bind(this)
+    // }

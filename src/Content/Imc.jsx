@@ -13,37 +13,38 @@ export default Imc = () => {
         resulTexto:''
     })
     
-    const[pesoFinal, setpesoFinal] = useState({valor:0})
+    const[pesoFinal, setpesoFinal] = useState('')
 
     const handleInputChange = (name, value) => {
-        setpesoFinal({
-            ...pesoFinal, [name]:value
+        setValores({
+            ...valores, [name]:value
         })
     }
 
     const calcular = ()=> {
-        let pesoFinal = peso/(altura*altura)
+        let calculoImc = valores.peso/(valores.altura*valores.altura)
 
-        if(pesoFinal <= 18,46){
-            pesoFinalexto="Abaixo do peso!"
-        } else if (pesoFinal > 18,46 && pesoFinal <=24,9){
-            pesoFinalexto="Peso normal!"
+        if(calculoImc <= 18.46){
+            setpesoFinal("Abaixo do peso!")
+        } else if (calculoImc >= 18.5 && calculoImc <=24.9){
+            setpesoFinal("Peso Normal!")
         } else {
-            pesoFinalexto="Acima do Peso!"
+            setpesoFinal("Acima do peso!");
         }
     }
 
     return (
         <View>
-            <View>Calculadora de IMC</View>
-            <View>
-                <TextInput style={styles.form} placeholder='Nome' textContentType="nome" onChangeText={(valor) => handleInputChange ("nome", (valor))}/>
-                <TextInput style={styles.form} placeholder='Peso' keyboardType='numbers-and-punctuation'  onChangeText={(valor) => handleInputChange ("peso", Number(valor))} />
-                <TextInput style={styles.form} placeholder='Altura' keyboardType='numbers-and-punctuation' onChangeText={(valor) => handleInputChange ("altura", Number(valor))}/>
-                <TouchableOpacity style={styles.botao} onPress={calcular}><Text>Calcular IMC</Text></TouchableOpacity>
+            <View style={styles.title}><Text style={styles.title}>Calculadora de IMC</Text></View>
+            <View style={styles.principal}>
+                <TextInput style={styles.form} placeholder='Digite seu Nome'  onChangeText={(valor) => handleInputChange ("nome", (valor))}/>
+                <TextInput style={styles.form} placeholder='Digite seu Peso' keyboardType='numeric'  onChangeText={(valor) => handleInputChange ("peso", Number(valor))} />
+                <TextInput style={styles.form} placeholder='Digite seu Altura' keyboardType='numeric' onChangeText={(valor) => handleInputChange ("altura", Number(valor))}/>
+                <TouchableOpacity style={styles.botao} onPress={() => calcular() }><Text style={styles.botaoTexto} >Calcular IMC</Text></TouchableOpacity>
             
-                {/* <Text style={styles.result}>{pesoFinal.valor.toFixed(2)}</Text>
-                <Text style={styles.result2}>{nome}{resulTexto}</Text> */}
+                <Text style={styles.result}>{valores.nome}</Text>
+                <Text style={styles.result}>{pesoFinal}</Text>
+                
             </View>
         </View>
     )

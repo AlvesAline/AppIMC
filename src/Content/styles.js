@@ -1,41 +1,85 @@
 import {StyleSheet} from 'react-native';
 
+
+
+
 export const styles = StyleSheet.create({
-    info:{
-        marginTop: '50',
-        padding: '5',
-        color: 'pink',
-        marginBottom:'20',
-        
-        
+    informacao:{
+        padding: 10,
+        width: '100%',
+        backgroundColor:'#ffe9e3',
+        marginRight:5,
+    },
+    infoT:{
+        marginTop:10,
+        textAlign: 'center',
+        fontSize:20,
+        fontWeight: 'bold',
+        padding: 5,
+        color: 'green'
+    },
+    infoA:{
+        fontSize:18,
+        fontWeight: 'bold',
+        padding: 5,
+    },
+    infoC:{
+        fontSize:15,
+        fontWeight: 'bold',
+        padding: 5,
+        textAlign: 'justify',
+    },
+    title:{
+        fontSize:25,
+        color: 'green',
+        alignItems: 'center',
+        paddingTop: 20,
+    },
+    principal:{
+        //  width:'400',
+        height:'420',
+        backgroundColor: 'rgba(250,250,250,1)',
+        //  alignItems: 'center',
+        //  justifyContent: 'center',
+        padding: '30',
+        marginBottom:'150',
     },
     form:{
-        height: '40',
+        height: '40px',
+        margin: 10,
         width: '400',
-        padding: '10',
+        padding: '55',
+        fontSize:20,
         color: '#333',
-        backgroundColor: 'red',
-        borderColor: '#eee',
-        marginTop:20,
+        backgroundColor: 'rgba(250,250,250,1)',
+        borderColor: 'black',
+        borderBottomWidth:1,
+        marginTop:'20',
     },
     botao:{
-        width: 400,
-        padding: '20',
-        backgroundColor: 'pink',
+        width: 300,
+        padding: 20,
+        marginLeft: 60,
+        borderRadius:20,
+        backgroundColor: 'black',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop:'35',
+        margin:35,
+    },
+    botaoTexto:{
+        color: 'rgba(250,250,250,1)',
+        fontSize: 20,
     },
     result:{
-
-        marginTop: '30',
-        backgroundColor: 'green',
-        marginTop: '20',
+        backgroundColor: 'pink',
+        width: 360,
+        marginTop: 0,
+        padding: 10,
+        backgroundColor: '#677258',
+        marginLeft: 28,
+        textAlign: 'center',
+        borderRadius: 50,
+        color: 'white',
+        fontSize:20,
     },
-    result2:{
-        
-        marginTop: '30',
-        backgroundColor: 'green',
-        marginTop: '20',
-    }
 })
